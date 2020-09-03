@@ -1,8 +1,14 @@
 
+import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 import pages.homepage.SearchFor;
 import pages.productPage.Compare;
 
+import static com.codeborne.selenide.Condition.appear;
+import static com.codeborne.selenide.Condition.disappears;
+import static com.codeborne.selenide.Selectors.byText;
+import static com.codeborne.selenide.Selectors.byXpath;
+import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
 public class TestRun {
@@ -11,20 +17,26 @@ public class TestRun {
     Compare compare = new Compare();
 
     @Test
-    public void compareItems() throws InterruptedException {
+    public void compareItems(){
 
         open("https://rozetka.com.ua/");
-        Thread.sleep(500);
         searchFor.search("планшеты");
         compare.compareFirstItem();
-        Thread.sleep(500);
+        itemSelectionVisualisation();
         compare.compareSecondItem();
+        itemSelectionVisualisation();
         compare.compareBothItems();
-        Thread.sleep(2000);
+
         compare.compareBothItemsVisual();
-        Thread.sleep(2000);
+        waitUntilPagesIsLoaded();
+    }
 
+    protected static void itemSelectionVisualisation(){
+        $(byXpath("//*[@class='compare-button']")).waitUntil(appear, 600);
+    }
 
+    protected static void waitUntilPagesIsLoaded() {
+        $(byText("Сравниваем планшеты")).waitUntil(disappears, 1000);
     }
 
  }
