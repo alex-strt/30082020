@@ -1,41 +1,46 @@
 
 import com.codeborne.selenide.Condition;
+import org.openqa.selenium.WebDriver;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.homepage.SearchFor;
 import pages.productPage.Compare;
 
-import static com.codeborne.selenide.Condition.appear;
-import static com.codeborne.selenide.Condition.disappears;
-import static com.codeborne.selenide.Selectors.byText;
-import static com.codeborne.selenide.Selectors.byXpath;
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static com.codeborne.selenide.WebDriverRunner.*;
 
 public class TestRun {
+
+    private final String baseURL = "https://rozetka.com.ua/";
 
     SearchFor searchFor = new SearchFor();
     Compare compare = new Compare();
 
-    @Test
-    public void compareItems(){
+    WebDriver driver;
 
-        open("https://rozetka.com.ua/");
-        searchFor.search("планшеты");
+
+    @BeforeMethod
+    public void beforeMethod() {
+        driver();
+    }
+
+
+    @Test
+    public void compareItems() {
+
+        open(baseURL);
+        searchFor.getSearchInput().val("планшеты").pressEnter();
         compare.getCompareFirstItem().click();
-        itemSelectionVisualisation();
         compare.getCompareSecondItem().click();
-        itemSelectionVisualisation();
         compare.getCompareBothItems().click();
         compare.getCompareBothItemsVisual().click();
-        waitUntilPagesIsLoaded();
+        compare.getcCompareBothItemsNewPage().waitUntil(Condition.appear, 3000);
+
     }
 
-    protected static void itemSelectionVisualisation(){
-        $(byXpath("//*[@class='compare-button']")).waitUntil(appear, 1000);
+    @AfterClass
+    public void close() {
+        closeWebDriver();
     }
-
-    protected static void waitUntilPagesIsLoaded() {
-        $(byText("Сравниваем планшеты")).waitUntil(disappears, 1000);
-    }
-
- }
+}
