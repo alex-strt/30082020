@@ -1,14 +1,15 @@
 package pages.homepage;
 
+import com.codeborne.selenide.SelenideElement;
+
 import static com.codeborne.selenide.Selenide.$;
 
 public class SearchFor {
 
-
-    public void search(String text){
-        $("[name='search']").val(text).pressEnter();
+    SelenideElement searchInput = $("[name='search']");
+    public SelenideElement getSearchInput() {
+        return searchInput;
 
     }
-
 }
 
