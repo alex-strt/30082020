@@ -1,25 +1,37 @@
 package pages.productPage;
 
+import com.codeborne.selenide.SelenideElement;
+
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selectors.byXpath;
 import static com.codeborne.selenide.Selenide.$;
 
 public class Compare {
-    public void compareFirstItem(){
-        $(byXpath("//*[@class='compare-button']")).click();
- }
 
-    public void compareSecondItem(){
-        $(byXpath("//*[@class='compare-button']")).click();
- }
+   SelenideElement compareFirstItem = $(byXpath("//*[@class='compare-button']"));
+   public SelenideElement getCompareFirstItem(){
+       return compareFirstItem;
+   }
 
-    public void compareBothItems(){
-        $(byXpath("//*[@class='header-actions__button header-actions__button_type_compare header-actions__button_state_active']")).click();
+    SelenideElement compareSecondItem = $(byXpath("//*[@class='compare-button']"));
+    public SelenideElement getCompareSecondItem(){
+        return compareSecondItem;
     }
 
-    public void compareBothItemsVisual(){
-        $(byXpath("//*[@class='comparison-modal__link']")).click();
+    SelenideElement compareBothItems = $(byXpath("//*[@class='header-actions__button header-actions__button_type_compare header-actions__button_state_active']"));
+    public SelenideElement getCompareBothItems(){
+        return compareBothItems;
     }
 
+    SelenideElement compareBothItemsVisual = $(byXpath("//*[@class='comparison-modal__link']"));
+    public SelenideElement getCompareBothItemsVisual(){
+        return compareBothItemsVisual;
+    }
+
+    SelenideElement compareBothItemsNewPage = $(byText("Сравниваем планшеты"));
+    public SelenideElement getcCompareBothItemsNewPage(){
+        return compareBothItemsNewPage;
+    }
 
 }
 
