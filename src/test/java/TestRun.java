@@ -38,6 +38,6 @@ public class TestRun {
 
     @AfterClass
     public void close() {
-        closeWebDriver();
+        driver().close();
     }
 }
