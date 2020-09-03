@@ -24,6 +24,10 @@ public class DriverConfig {
 
     String path = System.getProperty("user.dir") + "/storage/chromedriver.exe";
 
+    public static WebDriver getDriver() {
+        return driver;
+    }
+
     public WebDriver getChromeDriver() {
         ChromeDriverManager.getInstance(CHROME).setup();
         System.setProperty("webdriver.chrome.driver", path);

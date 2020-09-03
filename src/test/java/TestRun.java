@@ -1,5 +1,6 @@
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Driver;
 import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
@@ -16,8 +17,6 @@ public class TestRun {
 
     SearchFor searchFor = new SearchFor();
     Compare compare = new Compare();
-
-    WebDriver driver;
 
 
     @BeforeMethod
