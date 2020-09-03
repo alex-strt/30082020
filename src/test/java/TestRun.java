@@ -1,7 +1,5 @@
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Driver;
-import org.openqa.selenium.WebDriver;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
