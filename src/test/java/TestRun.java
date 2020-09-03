@@ -21,18 +21,17 @@ public class TestRun {
 
         open("https://rozetka.com.ua/");
         searchFor.search("планшеты");
-        compare.compareFirstItem();
+        compare.getCompareFirstItem().click();
         itemSelectionVisualisation();
-        compare.compareSecondItem();
+        compare.getCompareSecondItem().click();
         itemSelectionVisualisation();
-        compare.compareBothItems();
-
-        compare.compareBothItemsVisual();
+        compare.getCompareBothItems().click();
+        compare.getCompareBothItemsVisual().click();
         waitUntilPagesIsLoaded();
     }
 
     protected static void itemSelectionVisualisation(){
-        $(byXpath("//*[@class='compare-button']")).waitUntil(appear, 600);
+        $(byXpath("//*[@class='compare-button']")).waitUntil(appear, 1000);
     }
 
     protected static void waitUntilPagesIsLoaded() {
