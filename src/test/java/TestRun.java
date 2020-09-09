@@ -1,43 +1,61 @@
 
-import com.codeborne.selenide.Condition;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import pages.cart.Cart;
+import pages.homepage.Registration;
 import pages.homepage.SearchFor;
-import pages.productPage.Compare;
+import pages.homepage.UserLogin;
+import pages.productPage.AddItem;
 
 import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.*;
+import static com.codeborne.selenide.WebDriverRunner.isChrome;
+
 
 public class TestRun {
 
     private final String baseURL = "https://rozetka.com.ua/";
-
     SearchFor searchFor = new SearchFor();
-    Compare compare = new Compare();
+    AddItem addItem = new AddItem();
+    Registration registration = new Registration();
+    UserLogin userLogin = new UserLogin();
+    Cart cart = new Cart();
+
+
 
 
     @BeforeMethod
     public void beforeMethod() {
-        driver();
+        isChrome();
+        open(baseURL);
     }
 
 
     @Test
-    public void compareItems() {
+    public void compareItems(){
 
-        open(baseURL);
+        /*
+        new registration
+        test == pass
+         */
+
+//        registration.getEnterPersonalCabinet().click();
+//        registration.getRegistration().click();
+//        registration.getSurname().val("Смит");
+//        registration.getName().val("Джон");
+//        registration.getUsername().val("alfabravo1233@gmail.com");
+//        registration.getPassword().val("TEST123test").pressEnter();
+
+        /*
+        website login
+         */
+        userLogin.login();
+        /*
+        select and add item to shopping cart
+        add +1 to selected item
+         */
         searchFor.getSearchInput().val("планшеты").pressEnter();
-        compare.getCompareFirstItem().click();
-        compare.getCompareSecondItem().click();
-        compare.getCompareBothItems().click();
-        compare.getCompareBothItemsVisual().click();
-        compare.getcCompareBothItemsNewPage().waitUntil(Condition.appear, 3000);
-
+        addItem.getAddFirstItem().click();
+        cart.getPlusOneAction().click();
     }
 
-    @AfterClass
-    public void close() {
-        driver().close();
-    }
 }
