@@ -21,4 +21,10 @@ public class Cart {
         return plusOneAction;
     }
 
+    SelenideElement minusOneAction = $(byXpath("//button[contains(@aria-label,'Убрать один товар')]"));
+   public SelenideElement getMinusOneAction() {
+
+        return minusOneAction;
+    }
+
 }
