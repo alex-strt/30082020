@@ -51,11 +51,14 @@ public class TestRun {
         userLogin.login();
         /*
         select and add item to shopping cart
-        add +1 to selected item
+        add +1 to cart
+        add -1 from cart
          */
         searchFor.getSearchInput().val("планшеты").pressEnter();
         addItem.getAddFirstItem().click();
         cart.getPlusOneAction().click();
+        cart.getPlusOneAction().click();
+        cart.getMinusOneAction().click();
     }
 
 }
