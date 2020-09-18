@@ -1,19 +1,15 @@
 
-import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import pages.cart.Cart;
+import pages.configuration.TestConfiguration;
 import pages.homepage.Registration;
 import pages.homepage.SearchFor;
 import pages.homepage.UserLogin;
 import pages.productPage.AddItem;
 
-import static com.codeborne.selenide.Selenide.open;
-import static com.codeborne.selenide.WebDriverRunner.isChrome;
 
+public class TestRun extends TestConfiguration {
 
-public class TestRun {
-
-    private final String baseURL = "https://rozetka.com.ua/";
     SearchFor searchFor = new SearchFor();
     AddItem addItem = new AddItem();
     Registration registration = new Registration();
@@ -22,20 +18,11 @@ public class TestRun {
 
 
 
-
-    @BeforeMethod
-    public void beforeMethod() {
-        isChrome();
-        open(baseURL);
-    }
-
-
     @Test
     public void compareItems(){
 
         /*
         new registration
-        test == pass
          */
 
 //        registration.getEnterPersonalCabinet().click();
@@ -49,16 +36,25 @@ public class TestRun {
         website login
          */
         userLogin.login();
+
+        /*
+        search for item
+         */
+        searchFor.getSearchInput().val("планшеты").pressEnter();
+
+
         /*
         select and add item to shopping cart
         add +1 to cart
         add -1 from cart
          */
-        searchFor.getSearchInput().val("планшеты").pressEnter();
         addItem.getAddFirstItem().click();
+        addItem.getAddFirstItem().getAttribute("class").contains("active");
+        cart.getSelectActiveCart().click();
         cart.getPlusOneAction().click();
         cart.getPlusOneAction().click();
         cart.getMinusOneAction().click();
+
     }
 
 }
