@@ -1,6 +1,7 @@
 
 import org.testng.annotations.Test;
 import pages.cart.Cart;
+import pages.cart.CartCloseUp;
 import pages.configuration.TestConfiguration;
 import pages.homepage.Registration;
 import pages.homepage.SearchFor;
@@ -15,11 +16,11 @@ public class TestRun extends TestConfiguration {
     Registration registration = new Registration();
     UserLogin userLogin = new UserLogin();
     Cart cart = new Cart();
-
+    CartCloseUp cartCloseUp = new CartCloseUp();
 
 
     @Test
-    public void compareItems(){
+    public void compareItems() {
 
         /*
         new registration
@@ -35,7 +36,7 @@ public class TestRun extends TestConfiguration {
         /*
         website login
          */
-//        userLogin.login();
+        userLogin.login();
 
         /*
         search for item
@@ -54,6 +55,13 @@ public class TestRun extends TestConfiguration {
         cart.getPlusOneAction().click();
         cart.getPlusOneAction().click();
         cart.getMinusOneAction().click();
+        cart.getDeleteFromCart().click();
+        cart.getConfirmDeleteFromCart().click();
+
+        cartCloseUp.getCloseCartModalWindow().click();
+        userLogin.getSelectUserNameOnTheTopBar().hover();
+        userLogin.getExitUserNameOnTheTopBar().click();
+
 
     }
 

@@ -20,14 +20,10 @@ public class TestConfiguration {
         open(baseURL);
     }
 
-   @AfterClass
+    @AfterClass
     public void tearDown() {
         driver().close();
     }
 
-    @AfterSuite
-    public void cleanUP(){
-        getSelenideDriver().clearCookies();
-    }
 
 }
