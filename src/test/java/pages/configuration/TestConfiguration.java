@@ -2,7 +2,6 @@ package pages.configuration;
 
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeMethod;
 
 import static com.codeborne.selenide.Selenide.open;

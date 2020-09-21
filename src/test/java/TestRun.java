@@ -1,4 +1,5 @@
 
+import com.codeborne.selenide.Condition;
 import org.testng.annotations.Test;
 import pages.cart.Cart;
 import pages.cart.CartCloseUp;
@@ -59,7 +60,7 @@ public class TestRun extends TestConfiguration {
         cart.getConfirmDeleteFromCart().click();
 
         cartCloseUp.getCloseCartModalWindow().click();
-        userLogin.getSelectUserNameOnTheTopBar().hover();
+        userLogin.getSelectUserNameOnTheTopBar().should(Condition.appear).hover();
         userLogin.getExitUserNameOnTheTopBar().click();
 
 
