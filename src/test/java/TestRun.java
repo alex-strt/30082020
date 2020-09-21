@@ -21,8 +21,7 @@ public class TestRun extends TestConfiguration {
 
 
     @Test
-    public void compareItems() {
-
+    public void registration(){
         /*
         new registration
          */
@@ -33,6 +32,12 @@ public class TestRun extends TestConfiguration {
 //        registration.getName().val("Джон");
 //        registration.getUsername().val("alfabravo1233@gmail.com");
 //        registration.getPassword().val("TEST123test").pressEnter();
+    }
+
+    @Test
+    public void compareItems() {
+
+
 
         /*
         website login
