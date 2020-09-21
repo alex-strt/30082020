@@ -35,7 +35,7 @@ public class TestRun extends TestConfiguration {
         /*
         website login
          */
-        userLogin.login();
+//        userLogin.login();
 
         /*
         search for item
