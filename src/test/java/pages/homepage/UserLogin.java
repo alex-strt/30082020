@@ -1,7 +1,6 @@
 package pages.homepage;
 
 import com.codeborne.selenide.SelenideElement;
-import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selectors.byId;
 import static com.codeborne.selenide.Selectors.byXpath;
