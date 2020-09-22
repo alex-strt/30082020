@@ -16,7 +16,8 @@ public class UserLogin {
         $(byId("auth_pass")).setValue("TEST123test").pressEnter();
     }
 
-    SelenideElement selectUserNameOnTheTopBar = $(byXpath("//a[@class='header-topline__user-link link-dashed'][contains(.,'Джон Смит')]"));
+    //SelenideElement selectUserNameOnTheTopBar = $(byXpath("//a[@class='header-topline__user-link link-dashed'][contains(.,'Джон Смит')]"));
+    SelenideElement selectUserNameOnTheTopBar = $(byXpath("//a[@class='header-topline__user-link link-dashed']"));
 
     public SelenideElement getSelectUserNameOnTheTopBar() {
 

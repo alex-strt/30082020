@@ -10,6 +10,8 @@ import pages.homepage.UserLogin;
 import pages.homepage.PopUpKiller;
 import pages.productPage.AddItem;
 
+import static com.codeborne.selenide.Condition.visible;
+
 
 public class TestRun extends TestConfiguration {
 
@@ -23,7 +25,7 @@ public class TestRun extends TestConfiguration {
 
 
     @Test
-    public void registration(){
+    public void registration() {
         /*
         new registration
          */
@@ -37,7 +39,7 @@ public class TestRun extends TestConfiguration {
     }
 
     @Test
-    public void compareItems() throws InterruptedException {
+    public void compareItems() {
 
         /*
         website login
@@ -49,10 +51,9 @@ public class TestRun extends TestConfiguration {
          */
         searchFor.getSearchInput().val("планшеты").pressEnter();
 
-        Thread.sleep(5000);
-        if (popUpKiller.getQuestionPopup().isDisplayed()) {
-            popUpKiller.getQuestionPopupClose().click();
-        }
+        popUpKiller.getQuestionPopup().shouldBe(visible);
+        popUpKiller.getQuestionPopupClose().click();
+
 
         /*
         select and add item to shopping cart
@@ -73,7 +74,6 @@ public class TestRun extends TestConfiguration {
         cartCloseUp.getCloseCartModalWindow().click();
         userLogin.getSelectUserNameOnTheTopBar().should(Condition.appear).hover();
         userLogin.getExitUserNameOnTheTopBar().click();
-
 
     }
 
