@@ -7,6 +7,7 @@ import pages.configuration.TestConfiguration;
 import pages.homepage.Registration;
 import pages.homepage.SearchFor;
 import pages.homepage.UserLogin;
+import pages.homepage.PopUpKiller;
 import pages.productPage.AddItem;
 
 
@@ -17,6 +18,7 @@ public class TestRun extends TestConfiguration {
     Registration registration = new Registration();
     UserLogin userLogin = new UserLogin();
     Cart cart = new Cart();
+    PopUpKiller popUpKiller = new PopUpKiller();
     CartCloseUp cartCloseUp = new CartCloseUp();
 
 
@@ -35,9 +37,7 @@ public class TestRun extends TestConfiguration {
     }
 
     @Test
-    public void compareItems() {
-
-
+    public void compareItems() throws InterruptedException {
 
         /*
         website login
@@ -49,6 +49,10 @@ public class TestRun extends TestConfiguration {
          */
         searchFor.getSearchInput().val("планшеты").pressEnter();
 
+        Thread.sleep(5000);
+        if (popUpKiller.getQuestionPopup().isDisplayed()) {
+            popUpKiller.getQuestionPopupClose().click();
+        }
 
         /*
         select and add item to shopping cart
@@ -57,12 +61,14 @@ public class TestRun extends TestConfiguration {
          */
         addItem.getAddFirstItem().click();
         addItem.getAddFirstItem().getAttribute("class").contains("active");
+
         cart.getSelectActiveCart().click();
         cart.getPlusOneAction().click();
         cart.getPlusOneAction().click();
         cart.getMinusOneAction().click();
         cart.getDeleteFromCart().click();
         cart.getConfirmDeleteFromCart().click();
+
 
         cartCloseUp.getCloseCartModalWindow().click();
         userLogin.getSelectUserNameOnTheTopBar().should(Condition.appear).hover();
