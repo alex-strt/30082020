@@ -9,7 +9,7 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class Cart {
 
-    SelenideElement selectActiveCart = $(byXpath("//*[@class='header-actions__button header-actions__button_type_basket header-actions__button_state_active']"));
+    SelenideElement selectActiveCart = $(byXpath("//*[contains(@class,'header-actions__button_type_basket')]"));
 
     public SelenideElement getSelectActiveCart() {
 
@@ -36,7 +36,7 @@ public class Cart {
         return deleteFromCart;
     }
 
-    SelenideElement confirmDeleteFromCart = $(By.xpath("//button[@class='button button--medium button--with-icon button--link cart-actions__button'][contains(.,'Удалить из корзины')]"));
+    SelenideElement confirmDeleteFromCart = $(By.xpath("//button[contains(.,'Удалить из корзины')]"));
 
     public SelenideElement getConfirmDeleteFromCart() {
         return confirmDeleteFromCart;

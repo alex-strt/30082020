@@ -24,11 +24,11 @@ public class TestRun extends TestConfiguration {
     CartCloseUp cartCloseUp = new CartCloseUp();
 
 
-    @Test
-    public void registration() {
         /*
         new registration
          */
+//    @Test
+//    public void registration() {
 
 //        registration.getEnterPersonalCabinet().click();
 //        registration.getRegistration().click();
@@ -36,7 +36,7 @@ public class TestRun extends TestConfiguration {
 //        registration.getName().val("Джон");
 //        registration.getUsername().val("alfabravo1233@gmail.com");
 //        registration.getPassword().val("TEST123test").pressEnter();
-    }
+//    }
 
     @Test
     public void compareItems() {
@@ -53,7 +53,6 @@ public class TestRun extends TestConfiguration {
 
         popUpKiller.getQuestionPopup().shouldBe(visible);
         popUpKiller.getQuestionPopupClose().click();
-
 
         /*
         select and add item to shopping cart
@@ -72,7 +71,7 @@ public class TestRun extends TestConfiguration {
 
 
         cartCloseUp.getCloseCartModalWindow().click();
-        userLogin.getSelectUserNameOnTheTopBar().should(Condition.appear).hover();
+        userLogin.getSelectUserNameOnTheTopBar().shouldBe(visible).hover();
         userLogin.getExitUserNameOnTheTopBar().click();
 
     }
