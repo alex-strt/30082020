@@ -1,19 +1,19 @@
-
-import com.codeborne.selenide.Condition;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.cart.Cart;
 import pages.cart.CartCloseUp;
 import pages.configuration.TestConfiguration;
+import pages.homepage.PopUpKiller;
 import pages.homepage.Registration;
 import pages.homepage.SearchFor;
 import pages.homepage.UserLogin;
-import pages.homepage.PopUpKiller;
 import pages.productPage.AddItem;
 
 import static com.codeborne.selenide.Condition.visible;
 
 
-public class TestRun extends TestConfiguration {
+public class TestRunOne extends TestConfiguration {
 
     SearchFor searchFor = new SearchFor();
     AddItem addItem = new AddItem();
@@ -40,40 +40,31 @@ public class TestRun extends TestConfiguration {
 
     @Test
     public void compareItems() {
-
-        /*
-        website login
-         */
-        userLogin.login();
-
-        /*
-        search for item
-         */
         searchFor.getSearchInput().val("планшеты").pressEnter();
 
         popUpKiller.getQuestionPopup().shouldBe(visible);
         popUpKiller.getQuestionPopupClose().click();
 
-        /*
-        select and add item to shopping cart
-        add +1 to cart
-        add -1 from cart
-         */
         addItem.getAddFirstItem().click();
         addItem.getAddFirstItem().getAttribute("class").contains("active");
-
         cart.getSelectActiveCart().click();
         cart.getPlusOneAction().click();
         cart.getPlusOneAction().click();
         cart.getMinusOneAction().click();
         cart.getDeleteFromCart().click();
         cart.getConfirmDeleteFromCart().click();
-
-
         cartCloseUp.getCloseCartModalWindow().click();
+
+    }
+    @BeforeClass
+    public void startSession() {
+        userLogin.login();
+    }
+
+    @AfterClass
+    public void stopSession() {
         userLogin.getSelectUserNameOnTheTopBar().shouldBe(visible).hover();
         userLogin.getExitUserNameOnTheTopBar().click();
-
     }
 
 }
