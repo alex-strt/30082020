@@ -1,5 +1,8 @@
-import org.testng.Assert;
-import org.testng.annotations.*;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
+import pages.cart.Cart;
 import pages.cart.CartCheck;
 import pages.configuration.TestConfiguration;
 import pages.homepage.HomePageReturn;
@@ -15,9 +18,7 @@ public class TestRunTwo extends TestConfiguration {
     SearchFor searchFor = new SearchFor();
     CartCheck cartCheck = new CartCheck();
     HomePageReturn homePageReturn = new HomePageReturn();
-
-
-    //f***g Data-Driven Testing
+    Cart cart = new Cart();
 
 
     @DataProvider
@@ -39,12 +40,19 @@ public class TestRunTwo extends TestConfiguration {
 
     @Test(dataProvider = "searchDifferentValues")
     public void testMethode(String item) {
-        searchFor.getSearchInput().val(item).shouldBe(visible).click();
         cartCheck.getCartCheck().click();
-        cartCheck.getCartModalClose().click();
-        homePageReturn.getHomePageReturn().click();
+        if (cartCheck.getEmptyCart().isDisplayed()) {
+            cartCheck.getCartModalClose().click();
 
+        } else {
+            cart.getSelectFilledCart().click();
+            cart.getConfirmDeleteFromCart().click();
+            cartCheck.getCartModalClose().click();
+        }
+        homePageReturn.getHomePageReturn().click();
+        searchFor.getSearchInput().val(item).shouldBe(visible).click();
     }
+
 
     @BeforeClass
     public void startSession() {

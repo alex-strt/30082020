@@ -5,7 +5,9 @@ import org.openqa.selenium.By;
 
 import static com.codeborne.selenide.Selenide.$;
 
-public class CartCheck {
+public class CartCheck{
+
+
 
     SelenideElement cartCheck = $(By.xpath("//*[contains(@class,'header-actions__button_type_basket')]"));
 
@@ -14,7 +16,8 @@ public class CartCheck {
         return cartCheck;
     }
 
-    SelenideElement cartModalClose = $(By.cssSelector("button.modal__close"));
+    SelenideElement cartModalClose = $(By.xpath("//button[contains(@class,'modal__close')]"));;
+
 
     public SelenideElement getCartModalClose() {
 
@@ -22,5 +25,11 @@ public class CartCheck {
     }
 
 
-}
+    SelenideElement emptyCart = $(By.xpath("//h4[@class='cart-dummy__heading'][contains(.,'Корзина пуста')]"));
 
+    public SelenideElement getEmptyCart() {
+
+        return emptyCart;
+    }
+
+}

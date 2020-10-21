@@ -36,10 +36,21 @@ public class Cart {
         return deleteFromCart;
     }
 
+
     SelenideElement confirmDeleteFromCart = $(By.xpath("//button[contains(.,'Удалить из корзины')]"));
 
     public SelenideElement getConfirmDeleteFromCart() {
         return confirmDeleteFromCart;
     }
+
+
+
+    SelenideElement selectFilledCart = $(byXpath("//button[contains(@aria-controls,'shoppingCartActions')]"));
+
+    public SelenideElement getSelectFilledCart() {
+
+        return selectFilledCart;
+    }
+
 
 }
