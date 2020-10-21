@@ -12,14 +12,7 @@ import static com.codeborne.selenide.WebDriverRunner.driver;
 public class TestConfiguration {
 
     private final String baseURL = "https://rozetka.com.ua/";
-
-
-    private UserLogin userLogin = new UserLogin();
-
-    public UserLogin getUserLogin() {
-        return userLogin;
-    }
-
+    protected UserLogin userLogin = new UserLogin();
 
     @BeforeSuite
     public void startSession() {
@@ -27,13 +20,16 @@ public class TestConfiguration {
         Configuration.browserSize = "1920x1080";
         Configuration.timeout = 10000;
         open(baseURL);
-        getUserLogin().login();
+        userLogin.getSelectPersonalAccount().pressEnter();
+        userLogin.getLoginInput().val("alfabravo1233@gmail.com").pressEnter();
+        userLogin.getPasswordInput().val("TEST123test").pressEnter();
+
     }
 
     @AfterSuite
     public void stopSession() {
-        getUserLogin().getSelectUserNameOnTheTopBar().shouldBe(visible).hover();
-        getUserLogin().getExitUserNameOnTheTopBar().click();
+        userLogin.getSelectUserNameOnTheTopBar().shouldBe(visible).hover();
+        userLogin.getExitUserNameOnTheTopBar().click();
         driver().close();
     }
 }

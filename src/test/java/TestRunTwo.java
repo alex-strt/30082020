@@ -5,7 +5,6 @@ import pages.cart.CartCheck;
 import pages.configuration.TestConfiguration;
 import pages.homepage.HomePageReturn;
 import pages.homepage.SearchFor;
-import pages.homepage.UserLogin;
 
 import static com.codeborne.selenide.Condition.visible;
 
@@ -16,7 +15,7 @@ public class TestRunTwo extends TestConfiguration {
     CartCheck cartCheck = new CartCheck();
     HomePageReturn homePageReturn = new HomePageReturn();
     Cart cart = new Cart();
-    UserLogin userLogin = new UserLogin();
+
 
 
     @DataProvider
