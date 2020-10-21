@@ -1,5 +1,3 @@
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pages.cart.Cart;
 import pages.cart.CartCloseUp;
@@ -55,16 +53,6 @@ public class TestRunOne extends TestConfiguration {
         cart.getConfirmDeleteFromCart().click();
         cartCloseUp.getCloseCartModalWindow().click();
 
-    }
-    @BeforeClass
-    public void startSession() {
-        userLogin.login();
-    }
-
-    @AfterClass
-    public void stopSession() {
-        userLogin.getSelectUserNameOnTheTopBar().shouldBe(visible).hover();
-        userLogin.getExitUserNameOnTheTopBar().click();
     }
 
 }

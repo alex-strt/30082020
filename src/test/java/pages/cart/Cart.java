@@ -44,8 +44,7 @@ public class Cart {
     }
 
 
-
-    SelenideElement selectFilledCart = $(byXpath("//button[contains(@aria-controls,'shoppingCartActions')]"));
+    SelenideElement selectFilledCart = $(By.xpath("//button[contains(@aria-label,'Удалить товар из корзины')]"));
 
     public SelenideElement getSelectFilledCart() {
 

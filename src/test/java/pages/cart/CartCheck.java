@@ -16,7 +16,8 @@ public class CartCheck{
         return cartCheck;
     }
 
-    SelenideElement cartModalClose = $(By.xpath("//button[contains(@class,'modal__close')]"));;
+
+    SelenideElement cartModalClose = $(By.xpath("//button[contains(@aria-label,'Закрыть модальное окно')]"));
 
 
     public SelenideElement getCartModalClose() {
